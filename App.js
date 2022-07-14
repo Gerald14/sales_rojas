@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { Button, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import AddItem from './components/AddItem';
+import List from './components/List';
+import ModalItem from './components/ModalItem';
 
 
 
@@ -7,12 +10,25 @@ export default function App() {
 
   const [textItem, setTextItem] = useState("");
   const [itemList, setItemList] = useState([]);
+  const [itemSelected, setItemSelected] = useState({});
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const handleChange = (text) => {
+  const onHandleChangeItem = (text) => {
     setTextItem(text)
   }
 
-  const Add = () => {
+  const onHandleDeleteItem = (id) => {
+    setItemList(currentItems => currentItems.filter(item => item.id !== id));
+    setItemSelected({});
+    setModalVisible(!modalVisible)
+  }
+
+  const onHandleModal = id => {
+    setItemSelected(itemList.filter(item => item.id === id)[0]);
+    setModalVisible(!modalVisible)
+  }
+ 
+  const addItem = () => {
     setItemList(currentItems => [
       ...currentItems,
       {id:Math.random().toString(), value:textItem}
@@ -22,29 +38,10 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.inputContainer}>
-        <TextInput 
-        style={styles.input} 
-        placeholder='Ingrese aqui'
-        onChangeText={handleChange}
-        value={textItem}/>
-        <Button 
-        title='Add' 
-        onPress={Add}
-        disabled={textItem.length == 0 || textItem.trim() == "" ? true:false}/>
-      </View>
+      <ModalItem modalVisible={modalVisible} itemSelected={itemSelected} onHandleDeleteItem={onHandleDeleteItem}/> 
+      <AddItem textItem={textItem} onHandleChangeItem={onHandleChangeItem} addItem={addItem} />
       <View>
-        <FlatList
-        data = {itemList}
-        renderItem = {data =>(
-          <TouchableOpacity key={data.item.id}>
-            <View>
-              <Text style={styles.item}>{data.item.value}</Text>
-            </View>
-          </TouchableOpacity>
-          )}
-        />
-          
+        <List itemList={itemList} onHandleModal={onHandleModal}/>
       </View>
     </View>
   );
@@ -53,25 +50,5 @@ export default function App() {
 const styles = StyleSheet.create({
   screen: {
    padding:30
-  },
-  inputContainer:{
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center'
-  },
-  input:{
-    borderBottomColor:'black',
-    borderBottomWidth:1,
-    width:'80%'
-  },
-  item:{
-    flexDirection:'row',
-    justifyContent:'center',
-    alignItems:'center',
-    borderRadius:5,
-    borderColor:'black',
-    borderWidth:1,
-    padding:6,
-    marginTop:10
   }
 });

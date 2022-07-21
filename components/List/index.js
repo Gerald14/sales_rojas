@@ -1,14 +1,14 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList } from 'react-native'
 import ListItem from './components/ListItem'
 
-const List = ({itemList,onHandleModal}) => {
+const List = ({itemList,onHandleModal,handlerViewItem}) => {
   return (
     <FlatList
         data = {itemList}
-        renderItem = {data => <ListItem onHandleModal={onHandleModal} item={data.item}/>}
+        renderItem = {data => <ListItem onHandleModal={onHandleModal} handlerViewItem={handlerViewItem} item={data.item}/>}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id}
-        />
+    />
   )
 }
 

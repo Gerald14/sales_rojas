@@ -1,52 +1,32 @@
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import AddItem from './components/AddItem';
-import List from './components/List';
-import ModalItem from './components/ModalItem';
-
-
+import ItemListScreen from './pages/ItemListScreen';
+import ItemScreen from './pages/ItemScreen';
+import {useFonts} from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 export default function App() {
+  const [loaded] = useFonts({
+    PoppinsBold: require('./assets/fonts/Poppins-Bold.ttf'),
+    PoppinsRegular: require('./assets/fonts/Poppins-Regular.ttf'),
+    PoppinsLight: require('./assets/fonts/Poppins-Light.ttf')})
+  const [itemNumber, setItemNumber] = useState(null)
 
-  const [textItem, setTextItem] = useState("");
-  const [itemList, setItemList] = useState([]);
-  const [itemSelected, setItemSelected] = useState({});
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const onHandleChangeItem = (text) => {
-    setTextItem(text)
+  const handlerViewItem = (itemSelected) => {
+    setItemNumber(itemSelected)
   }
 
-  const onHandleDeleteItem = (id) => {
-    setItemList(currentItems => currentItems.filter(item => item.id !== id));
-    setItemSelected({});
-    setModalVisible(!modalVisible)
+  const returnToList = () => {
+    setItemNumber(null)
   }
 
-  const onHandleModal = id => {
-    setItemSelected(itemList.filter(item => item.id === id)[0]);
-    setModalVisible(!modalVisible)
-  }
- 
-  const addItem = () => {
-    setItemList(currentItems => [
-      ...currentItems,
-      {id:Math.random().toString(), value:textItem}
-    ])
-    setTextItem(" ")
-  }
+  if(!loaded) return <AppLoading/>
 
   return (
-    <View style={styles.screen}>
-      <ModalItem visible={modalVisible} itemSelected={itemSelected} onDelete={onHandleDeleteItem}/> 
-      <AddItem value={textItem} onChange ={onHandleChangeItem} onAddItem ={addItem} />
-      <List itemList={itemList} onHandleModal={onHandleModal}/>
-    </View>
+    <>
+      {itemNumber?
+        <ItemScreen itemNumber={itemNumber} returnToList={returnToList}/>:
+        <ItemListScreen handlerViewItem={handlerViewItem}/>
+      }
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-   padding:30
-  }
-});

@@ -1,9 +1,9 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-const ListItem = ({onHandleModal, item}) => {
+const ListItem = ({onHandleModal, item,handlerViewItem}) => {
   return (
-    <TouchableOpacity onPress={() => onHandleModal(item.id)}>
+    <TouchableOpacity onPress={() => handlerViewItem(item.id)}>
         <View>
             <Text style={styles.item}>{item.value}</Text>
         </View>

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Button, Modal, StyleSheet, Text, View } from 'react-native'
 
-const ModalItem = ({modalVisible,itemSelected,onHandleDeleteItem}) => {
+const ModalItem = ({visible,itemSelected,onDelete}) => {
   return (
     <Modal
       animationType='slide'
       transparent={true}
-      visible={modalVisible}
+      visible={visible}
       >
         <View style={styles.modalBackground}>
           <View style={styles.modal}>
@@ -20,7 +20,7 @@ const ModalItem = ({modalVisible,itemSelected,onHandleDeleteItem}) => {
               <Text style={styles.modalItem}>{itemSelected.value}</Text>
             </View>
             <View style={styles.modalButton}>
-              <Button onPress={() => onHandleDeleteItem(itemSelected.id)} title="confirmar"></Button>
+              <Button onPress={() => onDelete(itemSelected.id)} title="confirmar"></Button>
             </View>
           </View>
         </View>

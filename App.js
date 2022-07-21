@@ -38,11 +38,9 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      <ModalItem modalVisible={modalVisible} itemSelected={itemSelected} onHandleDeleteItem={onHandleDeleteItem}/> 
-      <AddItem textItem={textItem} onHandleChangeItem={onHandleChangeItem} addItem={addItem} />
-      <View>
-        <List itemList={itemList} onHandleModal={onHandleModal}/>
-      </View>
+      <ModalItem visible={modalVisible} itemSelected={itemSelected} onDelete={onHandleDeleteItem}/> 
+      <AddItem value={textItem} onChange ={onHandleChangeItem} onAddItem ={addItem} />
+      <List itemList={itemList} onHandleModal={onHandleModal}/>
     </View>
   );
 }

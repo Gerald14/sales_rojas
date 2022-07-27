@@ -3,6 +3,7 @@ import ItemListScreen from './pages/ItemListScreen';
 import ItemScreen from './pages/ItemScreen';
 import {useFonts} from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import { SafeAreaView } from 'react-native';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -22,11 +23,11 @@ export default function App() {
   if(!loaded) return <AppLoading/>
 
   return (
-    <>
+    <SafeAreaView>
       {itemNumber?
         <ItemScreen itemNumber={itemNumber} returnToList={returnToList}/>:
         <ItemListScreen handlerViewItem={handlerViewItem}/>
       }
-    </>
+    </SafeAreaView>
   );
 }

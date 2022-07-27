@@ -1,7 +1,10 @@
 import React from 'react'
-import { Button, Modal, StyleSheet, Text, View } from 'react-native'
+import { Button, Modal, StyleSheet, Text, useWindowDimensions, View } from 'react-native'
 
 const ModalItem = ({visible,itemSelected,onDelete}) => {
+
+  
+
   return (
     <Modal
       animationType='slide'

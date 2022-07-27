@@ -5,15 +5,18 @@ const ItemScreen = ({itemNumber, returnToList}) => {
   return (
     <View style={styles.container}>
         <Text>{`item ID: ${itemNumber}`}</Text>
-        <Button title='Volver' onPress={returnToList}/>
+        <Button style={styles.button} title='Volver' onPress={returnToList}/>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
     container:{
-        marginTop:25,
-        padding:15
+      marginTop:25,
+      padding:15
+    },
+    button:{
+      width:100
     }
 })
 

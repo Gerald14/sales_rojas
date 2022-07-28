@@ -1,11 +1,11 @@
 import React from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
 
-const ItemDetailScreen = ({itemNumber, returnToList}) => {
+const ItemDetailScreen = () => {
   return (
     <View style={styles.container}>
-        <Text>{`item ID: ${itemNumber}`}</Text>
-        <Button style={styles.button} title='Volver' onPress={returnToList}/>
+        {/* <Text>{`item ID: ${itemNumber}`}</Text> */}
+        <Button style={styles.button} title='Volver' onPress={()=>({})}/>
     </View>
   )
 }

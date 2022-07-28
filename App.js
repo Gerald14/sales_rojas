@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import ItemListScreen from './pages/ItemListScreen';
-import ItemScreen from './pages/ItemScreen';
+import ItemListScreen from './screens/ItemListScreen';
+import ItemDetailScreen from './screens/ItemDetailScreen';
 import {useFonts} from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { SafeAreaView } from 'react-native';
@@ -25,7 +25,7 @@ export default function App() {
   return (
     <SafeAreaView>
       {itemNumber?
-        <ItemScreen itemNumber={itemNumber} returnToList={returnToList}/>:
+        <ItemDetailScreen itemNumber={itemNumber} returnToList={returnToList}/>:
         <ItemListScreen handlerViewItem={handlerViewItem}/>
       }
     </SafeAreaView>

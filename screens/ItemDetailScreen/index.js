@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
 
-const ItemScreen = ({itemNumber, returnToList}) => {
+const ItemDetailScreen = ({itemNumber, returnToList}) => {
   return (
     <View style={styles.container}>
         <Text>{`item ID: ${itemNumber}`}</Text>
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ItemScreen
+export default ItemDetailScreen

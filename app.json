@@ -3,7 +3,6 @@
     "name": "rojas_ventas",
     "slug": "rojas_ventas",
     "version": "1.0.0",
-    "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {

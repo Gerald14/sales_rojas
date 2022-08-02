@@ -14,12 +14,12 @@ const CategoryMangaScreen = ({navigation, route}) => {
     })
   }
 
-  const renderItemManga = ({item}) => {
+  const renderItemManga = ({item}) => (
     <MangaItem item={item} onSelected={handleSelected}/>
-  }
+  )
   return (
     <FlatList
-      data={breads}
+      data={mangas}
       renderItem={renderItemManga}
       keyExtractor={item => item.id}
     />

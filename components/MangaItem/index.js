@@ -11,11 +11,13 @@ const MangaItem = ({item, onSelected}) => {
         onPress={() => onSelected(item)}
     >
         <View style={styles.mangaItem}>
-            <Text style={styles.title}>{item.name}</Text>
-        </View>
-        <View>
-            <Text style={styles.details}>{item.price}</Text>
-            <Text style={styles.details}>{item.formato}</Text>
+            <View>
+                <Text style={styles.title}>{item.name}</Text>
+            </View>
+            <View>
+                <Text style={styles.details}>{item.price}</Text>
+                <Text style={styles.details}>{item.formato}</Text>
+            </View>
         </View>
     </TouchableOpacity>
   )

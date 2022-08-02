@@ -26,7 +26,7 @@ const ShopNavigator = () => {
         }}>
           <Stack.Screen name="Home" component={CategoryScreen} options={{title:'MangaStore'}}  /> 
           <Stack.Screen name="Products" component={CategoryMangaScreen} options={({route})=>({title:route.params.name})}  />
-          <Stack.Screen name="Detail" component={ItemDetailScreen} />
+          <Stack.Screen name="Detail" component={ItemDetailScreen} options={({route})=>({title:route.params.manga.name})} />
         </Stack.Navigator>
     </NavigationContainer>
   )

@@ -10,7 +10,7 @@ const CategoryMangaScreen = ({navigation, route}) => {
   const handleSelected = item => {
     navigation.navigate('Detail',{
       productID: item.id,
-      name:item.name
+      manga:item,
     })
   }
 

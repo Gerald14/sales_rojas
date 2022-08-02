@@ -1,11 +1,16 @@
 import React from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
 
-const ItemDetailScreen = () => {
+const ItemDetailScreen = ({route}) => {
+
+  const manga = route.params.manga;
+
   return (
     <View style={styles.container}>
-        {/* <Text>{`item ID: ${itemNumber}`}</Text> */}
-        <Button style={styles.button} title='Volver' onPress={()=>({})}/>
+        <Text>{manga.name}</Text>
+        <Text>{manga.description}</Text>
+        <Text>{manga.price}</Text>
+        <Text>{manga.formato}</Text>
     </View>
   )
 }

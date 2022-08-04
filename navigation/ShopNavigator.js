@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 
 const ShopNavigator = () => {
   return (
-    <NavigationContainer>
+    
         <Stack.Navigator initialRouteName="Home"
         screenOptions={{
           headerStyle:{
@@ -28,7 +28,6 @@ const ShopNavigator = () => {
           <Stack.Screen name="Products" component={CategoryMangaScreen} options={({route})=>({title:route.params.name})}  />
           <Stack.Screen name="Detail" component={ItemDetailScreen} options={({route})=>({title:route.params.manga.name})} />
         </Stack.Navigator>
-    </NavigationContainer>
   )
 }
 

@@ -1,7 +1,8 @@
 import {useFonts} from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { SafeAreaView } from 'react-native';
-import ShopNavigator from './navigation/ShopNavigator';
+import TabNavigator from './navigation/TabNavigator';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -13,6 +14,8 @@ export default function App() {
   if(!loaded) return <AppLoading/>
 
   return (
-    <ShopNavigator/>
+    <NavigationContainer>
+      <TabNavigator/>
+    </NavigationContainer>
   );
 }

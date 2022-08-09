@@ -2,7 +2,7 @@ export const CATEGORIES = [
     {
         id: 1,
         title: 'Shonen',
-        color: '#fff'
+        color: '#f0f0f5',
     },
     {
         id: 2,

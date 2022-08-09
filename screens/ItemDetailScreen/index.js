@@ -1,9 +1,10 @@
 import React from 'react'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
+import { useSelector } from 'react-redux'
 
-const ItemDetailScreen = ({route}) => {
+const ItemDetailScreen = () => {
 
-  const manga = route.params.manga;
+  const manga = useSelector(state => state.manga.selected)
 
   return (
     <View style={styles.container}>

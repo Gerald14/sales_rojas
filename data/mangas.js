@@ -2,23 +2,23 @@ export const MANGAS = [
     {
         id: 1,
         category: 1,
-        name: 'Name10',
-        description: 'BLABLABLA',
-        formato: 'tankobon',
-        price: 25
+        name: 'Dorohedoro 1',
+        description: 'description dorohedoro 1',
+        formato: 'kanzenban',
+        price: 55
     },
     {
         id: 2,
         category: 1,
-        name: 'Name10',
-        description: 'BLABLABLA',
-        formato: 'tankobon',
-        price: 25
+        name: 'Dorohedoro 2',
+        description: 'description dorohedoro 2',
+        formato: 'kanzenban',
+        price: 55
     },
     {
         id: 3,
         category: 2,
-        name: 'Name10',
+        name: '',
         description: 'BLABLABLA',
         formato: 'tankobon',
         price: 25

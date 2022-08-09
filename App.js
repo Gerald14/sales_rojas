@@ -3,6 +3,8 @@ import AppLoading from 'expo-app-loading';
 import { SafeAreaView } from 'react-native';
 import TabNavigator from './navigation/TabNavigator';
 import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -14,8 +16,10 @@ export default function App() {
   if(!loaded) return <AppLoading/>
 
   return (
-    <NavigationContainer>
-      <TabNavigator/>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <TabNavigator/>
+      </NavigationContainer>
+    </Provider>
   );
 }

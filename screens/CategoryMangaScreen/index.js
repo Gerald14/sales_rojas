@@ -1,13 +1,24 @@
+import { useEffect } from 'react'
 import { FlatList } from 'react-native'
 import MangaItem from '../../components/MangaItem'
-import { MANGAS } from '../../data/mangas'
+//redux
+import { useSelector, useDispatch } from 'react-redux'
 
+//actions
+import { selectManga, filteredManga } from '../../store/actions/manga.actions'
 
-const CategoryMangaScreen = ({navigation, route}) => {
+const CategoryMangaScreen = ({navigation}) => {
 
-  const mangas = MANGAS.filter(manga => manga.category === route.params.categoryID)
+  const dispatch = useDispatch()
+  const categoryMangas = useSelector(state => state.manga.filteredManga)
+  const category = useSelector(state => state.category.selected)
+
+    useEffect(() => {
+      dispatch(filteredManga(category.id))
+    }, [])
 
   const handleSelected = item => {
+    dispatch(selectManga(item.id))
     navigation.navigate('Detail',{
       productID: item.id,
       manga:item,
@@ -17,9 +28,10 @@ const CategoryMangaScreen = ({navigation, route}) => {
   const renderItemManga = ({item}) => (
     <MangaItem item={item} onSelected={handleSelected}/>
   )
+
   return (
     <FlatList
-      data={mangas}
+      data={categoryMangas}
       renderItem={renderItemManga}
       keyExtractor={item => item.id}
     />

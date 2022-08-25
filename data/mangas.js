@@ -1,6 +1,6 @@
 export const MANGAS = [
     {
-        id: 1,
+        id: 10,
         category: 1,
         name: 'Dorohedoro 1',
         description: 'description dorohedoro 1',
@@ -8,7 +8,7 @@ export const MANGAS = [
         price: 55
     },
     {
-        id: 2,
+        id: 20,
         category: 1,
         name: 'Dorohedoro 2',
         description: 'description dorohedoro 2',

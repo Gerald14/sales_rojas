@@ -1,10 +1,17 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { useSelector } from 'react-redux'
+import { Button, StyleSheet, Text, View } from 'react-native'
+import { useSelector,useDispatch } from 'react-redux'
+//Actions
+import { addItem } from '../../store/actions/cart.actions'
 
 const ItemDetailScreen = () => {
 
+  const dispatch= useDispatch()
+
   const manga = useSelector(state => state.manga.selected)
+
+  const handleAddtoCart = () => dispatch(addItem(manga))
+
 
   return (
     <View style={styles.container}>
@@ -12,6 +19,7 @@ const ItemDetailScreen = () => {
         <Text>{manga.description}</Text>
         <Text>{manga.price}</Text>
         <Text>{manga.formato}</Text>
+        <Button title= 'Add to cart' onPress={handleAddtoCart} />
     </View>
   )
 }

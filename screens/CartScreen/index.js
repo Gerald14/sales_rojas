@@ -1,13 +1,13 @@
-import { View, FlatList } from 'react-native'
+import { View, FlatList, Text } from 'react-native'
 import { useSelector } from 'react-redux'
 import CartItem from '../../components/CartIem'
 
 const CartScreen = () => {
   const items = useSelector(state => state.cart.items)
-
-  const renderItem = item => {
+  const total = useSelector(state => state.cart.total)
+  const renderItem = ({item}) => (
     <CartItem item={item} />
-  }
+  )
   return (
     <View>
       <FlatList
@@ -15,6 +15,7 @@ const CartScreen = () => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
+      <Text>Total: ${total}</Text>
     </View>
   )
 }

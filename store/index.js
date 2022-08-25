@@ -8,8 +8,8 @@ import CartReducer from "./reducers/cart.reducer";
 
 const RootReducer = combineReducers({
     category: CategoryReducer,
+    cart: CartReducer,
     manga: MangaReducer,
-    cart: CartReducer
 });
 
 export default createStore(RootReducer, applyMiddleware(thunk));

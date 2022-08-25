@@ -1,36 +1,35 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import React from 'react'
 
-const CartItem = () => {
+const CartItem = ({item}) => {
   return (
-    <View>
-        <TouchableOpacity
-            onPress={() => {}}
-            style={{
-                ...styles.container,
-                backgroundColor: item.color
-            }}
-        >
+    <TouchableOpacity>
+        <View style={styles.cartItem}>
             <View>
-                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.title}>{item.name}</Text>
             </View>
-        </TouchableOpacity>
-    </View>
+            <View>
+                <Text style={styles.details}>{item.price}</Text>
+                <Text style={styles.details}>{item.formato}</Text>
+            </View>
+        </View>
+    </TouchableOpacity>
     )
 }
 
 const styles=StyleSheet.create({
-    container:{
+    cartItem:{
         flex:1,
-        borderRadius:6,
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end',
-        padding:8,
-        shadowColor:'black',
-        shadowOpacity: 0.25,
-        shadowOffset: {width:0,height:2},
-        shadowRadius:6,
-        elevation:3
+        margin:15,
+        padding:10,
+        borderRadius:3,
+        backgroundColor:'#ccc',
+    },
+    title: {
+        fontFamily: 'open-sans-bold',
+        fontsize:20,
+    },
+    details: {
+        fontsize:18
     }
 })
 
